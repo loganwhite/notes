@@ -2,7 +2,7 @@
 
 2. Verify by comparing the device ID to the supported list. First use the following Linux command:
 
-```lspci –nn | grep eth0 ```
+```lspci | egrep -i --color 'network|ethernet' ```
 
 The result shows a PCI ID for the called eth interface :
 
