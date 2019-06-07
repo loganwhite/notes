@@ -1,4 +1,4 @@
-1. Check the list of supported NICs at http://wiki.dpdk.org/doc/nics
+1. Check the list of supported NICs at http://core.dpdk.org/supported/
 
 2. Verify by comparing the device ID to the supported list. First use the following Linux command:
 
