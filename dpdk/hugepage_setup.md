@@ -64,3 +64,5 @@ none             4194304       0   4194304   0% /mnt/huge
 sudo rm -rf /dev/hugepages/*
 ```
 
+# Setting up the total number of hugepages
+sysctl vm.nr_hugepages=20480
