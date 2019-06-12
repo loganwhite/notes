@@ -61,6 +61,6 @@ none             4194304       0   4194304   0% /mnt/huge
 
 # Free hugepage is no space available
 ```
-rm -rf /dev/hugepages/*
+sudo rm -rf /dev/hugepages/*
 ```
 
