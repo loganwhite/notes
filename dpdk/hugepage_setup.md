@@ -58,3 +58,9 @@ Filesystem     1K-blocks    Used Available Use% Mounted on
 none             1048576       0   1048576   0% /mnt/huge_c0
 none             4194304       0   4194304   0% /mnt/huge
 ```
+
+# Free hugepage is no space available
+```
+rm -rf /dev/hugepages/*
+```
+
