@@ -2,12 +2,12 @@
 
 ## 1. Edit `/etc/default/grub`
 
-This setting allocates 1GB * 16pages = 16GB hugepages on boot time.
+This setting allocates 1GB * **8pages** = 16GB hugepages on boot time.
 
 - `/etc/default/grub`
 
 ```
-GRUB_CMDLINE_LINUX_DEFAULT="default_hugepagesz=1G hugepagesz=1G hugepages=16"
+GRUB_CMDLINE_LINUX_DEFAULT="default_hugepagesz=1G hugepagesz=1G hugepages=8"
 ```
 
 
@@ -30,7 +30,7 @@ In order to mount hugetlbfs, edit `/etc/fstab` like below.
 
 ```
 # for host
-none /mnt/huge hugetlbfs pagesize=1G,size=4G 0 0
+none /mnt/huge hugetlbfs pagesize=1G,size=8G 0 0
 # for container
 none /mnt/huge_c0 hugetlbfs pagesize=1G,size=1G 0 0
 # none /mnt/huge_c1 hugetlbfs pagesize=1G,size=1G 0 0 # For another container, add the entry like this
@@ -65,4 +65,4 @@ sudo rm -rf /dev/hugepages/*
 ```
 
 # Setting up the total number of hugepages
-sysctl vm.nr_hugepages=20480
+```sysctl vm.nr_hugepages=20480```
