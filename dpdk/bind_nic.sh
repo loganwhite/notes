@@ -17,7 +17,7 @@ if ! lsmod | grep -q '^igb_uio'; then
 fi
 
 # Bind NIC to driver
-sudo ./dpdk-devbind.py --bind=igb_uio $DEVICE_ID
+sudo $DPDK_HOME/usertools/dpdk-devbind.py --bind=igb_uio $DEVICE_ID
 
 #Print current NIC binding status
-./dpdk-devbind.py --status
+$DPDK_HOME/usertools/dpdk-devbind.py --status
