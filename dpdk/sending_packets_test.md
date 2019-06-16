@@ -37,13 +37,13 @@ Now you can monitor the pkts are sending in the BESS machine and pkts are receiv
      `tui`  
      `start -f stl/bench.py -m 100% --port 0 -t size=64,vm=var2 -d 10`
 3. Change the BESS configuration script as follows:
-  ```
-  phy_port1 = PMDPort(port_id=0,num_inc_q=1, num_out_q=1)
-  phy_port2 = PMDPort(port_id=1,num_inc_q=1, num_out_q=1)
+    ```
+    phy_port1 = PMDPort(port_id=0,num_inc_q=1, num_out_q=1)
+    phy_port2 = PMDPort(port_id=1,num_inc_q=1, num_out_q=1)
 
-  input1 = QueueInc(port=phy_port1, qid=0)
+    input1 = QueueInc(port=phy_port1, qid=0)
 
-  output2 = QueueOut(port=phy_port2, qid=0) #This module will write to myport on queue
+    output2 = QueueOut(port=phy_port2, qid=0) #This module will write to myport on queue
 
-  input1 -> Measure() -> output2
-  ```
+    input1 -> Measure() -> output2
+    ```
