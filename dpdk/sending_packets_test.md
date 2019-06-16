@@ -21,3 +21,29 @@
   ..* enter ```start all ``` in the dpdk-pktgen commandline.
 
 Now you can monitor the pkts are sending in the BESS machine and pkts are receiving in the dpdk-pktgen machine.
+
+## Using BESS and Trex send from one port and rececive from another.
+1. most of the configurations are the same as previous section except the follows:
+2. Compile and run Trex:
+  1. open one terminal to the trex machine  
+   `cd /opt/trex/script`  
+   `sudo ./t-rex-64 -i -c 4 --mbuf-factor 0.2`
+
+  2. Another console to the trex machine  
+     `cd /opt/trex/script/`  
+     `sudo ./trex-console`  
+
+     Then type  
+     `tui`  
+     `start -f stl/bench.py -m 100% --port 0 -t size=64,vm=var2 -d 10`
+3. Change the BESS configuration script as follows:
+  ```
+  phy_port1 = PMDPort(port_id=0,num_inc_q=1, num_out_q=1)
+  phy_port2 = PMDPort(port_id=1,num_inc_q=1, num_out_q=1)
+
+  input1 = QueueInc(port=phy_port1, qid=0)
+
+  output2 = QueueOut(port=phy_port2, qid=0) #This module will write to myport on queue
+
+  input1 -> Measure() -> output2
+  ```
