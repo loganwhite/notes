@@ -1,4 +1,4 @@
-Building on CentOS 7 is tricky because some of its packages (such as gcc) are too old. Luckily, it provides developer toolsets that can be used in such situations. We've managed to compile BESS for CentOS and RHEL using the following commands (I'm pulling these out of a set of build scripts so let me know if you run into any issues):
+https://github.com/NetSys/bess/issues/803 Building on CentOS 7 is tricky because some of its packages (such as gcc) are too old. Luckily, it provides developer toolsets that can be used in such situations. We've managed to compile BESS for CentOS and RHEL using the following commands (I'm pulling these out of a set of build scripts so let me know if you run into any issues):
 
 Install dependencies with Yum:
 ```
