@@ -1,0 +1,4 @@
+- `-f` foreground
+- `-k` allow multiple bessd processes running simultanously
+- `-t` (dump types?)
+- `-i` (to be finished.)
