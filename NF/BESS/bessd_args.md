@@ -1,4 +1,4 @@
 - `-f` foreground
 - `-k` allow multiple bessd processes running simultanously
-- `-t` (dump types?)
-- `-i` (to be finished.)
+- `-t` dump the size of all the types used in BESS.
+- `-i` Specifies where to write the pidfile of current running bessd.
