@@ -7,3 +7,4 @@
 5. Add actor spawn code in the `middleman/actor.c` file to intialize the actor when running.
 6. Add middleman attachment code to `middleman/actor.c` to attach the actor to the middleman.
 7. Add action code to `middleman/mm.c`
+8. Add the `dummy.c` source file to `Makefile` file.
