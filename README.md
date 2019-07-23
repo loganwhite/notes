@@ -1,2 +1,2 @@
-# Useful Notes of Computer Science systems
+# Useful Notes of Computer Science
 
