@@ -24,6 +24,8 @@ rc('text', usetex=True)
 matplotlib.rcParams['text.latex.unicode']=True
 matplotlib.rcParams['font.family'] = ['serif']
 matplotlib.rcParams['font.serif'] = ['times']
+# beautiful font
+matplotlib.rcParams['pdf.use14corefonts'] = True
 
 params = {
     'axes.labelsize' : '12',
