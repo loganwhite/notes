@@ -40,6 +40,11 @@ marker = ['o', 'v', '^', '<', '>', '8', 's', 'p', 'd',
             '*', 'h', 'H', 'D', 'X', 'P']
 linestyle = ['--', '-', ':', '-.', '-','-','-']
 
+# beautiful color patterns
+COLORS = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728',
+          '#9467bd', '#8c564b', '#e377c2', '#7f7f7f',
+          '#bcbd22', '#17becf']
+
 
 pylab.rcParams.update(params)
 
@@ -89,7 +94,8 @@ def plot_statesize_perf():
     
     # annotate with arrow
     ax.annotate('This is a \\\\turning point', xy=(60000, 130), xytext=(500000, 125),
-            arrowprops=dict(arrowstyle="->", facecolor='black'))
+            # note that the arrow color is changed with the color attribute.
+            arrowprops=dict(arrowstyle="->", facecolor='black', color=COLORS[0]))
 
     plt.legend(legend, title='Temporal locality')
     plt.tight_layout(True)
