@@ -98,6 +98,8 @@ def plot_statesize_perf():
     ax.annotate('This is a \\\\turning point', xy=(60000, 130), xytext=(500000, 125),
             # note that the arrow color is changed with the color attribute.
             arrowprops=dict(arrowstyle="->", facecolor='black', color=COLORS[0]))
+    # add text to the ax        
+    ax.text(400000, 140, r'$s_1$', fontsize='12')
 
     plt.legend(legend, title='Temporal locality')
     plt.tight_layout(True)
