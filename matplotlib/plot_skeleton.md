@@ -76,12 +76,20 @@ def plot_statesize_perf():
     # scale the x axis to log and make it good 
     # looking (show in the scientific expression way)
     plt.xscale('log')
-
+    
+    # draw a vertical line
+    plt.plt.axvline(x = 45000, linewidth=0.8, ls='dashed')
+    
+    # get current axe
     ax = plt.gca()
     ax.set_xlim([400, 2000000])
     min_mpps = 60
     max_mpps = 140
     ax.set_ylim([min_mpps, max_mpps])
+    
+    # annotate with arrow
+    ax.annotate('This is a \\\\turning point', xy=(60000, 130), xytext=(500000, 125),
+            arrowprops=dict(arrowstyle="->", facecolor='black'))
 
     plt.legend(legend, title='Temporal locality')
     plt.tight_layout(True)
