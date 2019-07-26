@@ -84,7 +84,8 @@ def plot_statesize_perf():
     # looking (show in the scientific expression way)
     plt.xscale('log')
     
-    # draw a vertical line
+    # draw a vertical line, the length of the line can be ranged from
+    # 0 ~ 1 which is a relative value.
     plt.plt.axvline(x = 45000, linewidth=0.8, ls='dashed')
     
     # get current axe
@@ -93,6 +94,9 @@ def plot_statesize_perf():
     min_mpps = 60
     max_mpps = 140
     ax.set_ylim([min_mpps, max_mpps])
+    
+    # set the tick shown in integer
+    # ax.xaxis.set_major_locator(MaxNLocator(integer=True))
     
     # annotate with arrow
     ax.annotate('This is a \\\\turning point', xy=(60000, 130), xytext=(500000, 125),
