@@ -17,3 +17,10 @@ Restart the trex server
 
 ## Port 0 : *** port is already owned by another session of 'root'
 Do not use sudo to run the trex server when you are already a root user.
+
+
+## When writing TRex python scripts, add the TRex libraries to python env.
+
+```bash
+export PYTHONPATH="${PYTHONPATH}:/opt/trex/v2.59/automation/trex_control_plane/interactive"
+```
