@@ -116,4 +116,17 @@ def plot_statesize_perf():
     
 
 plot_statesize_perf()
+
+def autolabel(rects, ax):
+    """ auto annotate the value of a bar chart bar
+        rects: the return object of ax.bar() function
+        ax: the axe object
+    """
+    for rect in rects:
+        height = rect.get_height()
+        ax.annotate('{}'.format(height),
+                    xy=(rect.get_x() + rect.get_width() / 2, height),
+                    xytext=(0, 3),  # 3 points vertical offset
+                    textcoords="offset points",
+                    ha='center', va='bottom')
 ```
