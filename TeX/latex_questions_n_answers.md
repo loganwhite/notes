@@ -35,3 +35,11 @@ Note that the space after `\probname` is only used for identifying the command. 
 ```latex
 \newcommand{\probname}{Problem name }
 ```
+
+## How to remove indent in the `enumerate` environment
+use wide in the enumerate parameter list:
+```latex
+\begin{enumerate}[wide]
+\item ...
+\end{enumerate}
+```
