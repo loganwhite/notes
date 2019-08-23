@@ -18,3 +18,20 @@ Sometimes you want to place a figure inside a caption of either a table or a fig
   \caption{Motivation examples demonstration. 
   \raisebox{-0.4\height}{\protect\includegraphics[width=1em]{fig/fail_emoj}} represents the device is compromised}
   ```
+## Defining macro in LaTeX (`\newcommand`)
+Some times, when defining new commands with `\newcommand`, it act like macro where it just replace the newly defined command word with the one it stands for. E.g. If a new macro is defined like:
+```latex
+\newcommand{\probname}{Problem name}
+```
+Then in the text:
+```latex
+This is \probname ok?
+```
+after compilation will be like:
+
+This is Problem nameok?
+
+Note that the space after `\probname` is only used for identifying the command. If we want to add space between "name" and "ok", we have to add a space inside the `\probname` defination.
+```latex
+\newcommand{\probname}{Problem name }
+```
