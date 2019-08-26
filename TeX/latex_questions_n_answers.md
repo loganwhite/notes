@@ -35,6 +35,14 @@ Note that the space after `\probname` is only used for identifying the command. 
 ```latex
 \newcommand{\probname}{Problem name }
 ```
+**NOTE: using the above method may cause problems, the correct way is using `\␣`**
+
+```latex
+% Macro definition
+\newcommand{\probname}{Problem name }
+% Macro invokation
+This is \probname\ ok?
+```
 
 ## How to remove indent in the `enumerate` environment
 use wide in the enumerate parameter list:
