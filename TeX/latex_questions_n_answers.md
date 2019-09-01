@@ -51,3 +51,18 @@ use wide in the enumerate parameter list:
 \item ...
 \end{enumerate}
 ```
+
+
+## Highlight text
+Using the `soul` package to highlight the text. Generally, if using `\hl` command directly, the text will be underlined. If adding `color` package, the text will be highlighted with yellow in the background.
+```latex
+\documentclass{article}
+\usepackage{color}
+\usepackage{soul}
+...
+\begin{document}
+...
+\hl{This is the highlighted text. This is the highlighted text. This is the highlighted text. This is the highlighted text. This is the highlighted text. This is the highlighted text. This is the highlighted text. This is the highlighted text. This is the highlighted text.} This is normal text.This is normal text.This is normal text.This is normal text.This is normal text.This is normal text.This is normal text.
+...
+\end{document}
+```
