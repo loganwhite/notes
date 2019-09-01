@@ -69,7 +69,8 @@ Using the `soul` package to highlight the text. Generally, if using `\hl` comman
 
 
 
-## How to highlight enumerate label
+## How to highlight enumerate label and itemmized label
+### enumerate
 1. Defining the following command
 ```latex
 \newcommand{\hlitem}{\stepcounter{enumi}\item[\hl{\theenumi}]}
@@ -77,3 +78,9 @@ Using the `soul` package to highlight the text. Generally, if using `\hl` comman
 Note that `\hl` is from `soul` package.
 
 2. Using `\hlitem` in the enumerate rather than `item`. 
+### itemized
+1. Define
+```latex
+\newcommand{\hlitmizeditem}{\item[\hl{\labelitemi}]}
+```
+2. use `\hlitmizeditem` to replacd `\item`.
