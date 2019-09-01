@@ -66,3 +66,14 @@ Using the `soul` package to highlight the text. Generally, if using `\hl` comman
 ...
 \end{document}
 ```
+
+
+
+## How to highlight enumerate label
+1. Defining the following command
+```latex
+\newcommand{\hlitem}{\stepcounter{enumi}\item[\hl{\theenumi}]}
+```
+Note that `\hl` is from `soul` package.
+
+2. Using `\hlitem` in the enumerate rather than `item`. 
