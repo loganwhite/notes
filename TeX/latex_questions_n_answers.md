@@ -84,3 +84,22 @@ Note that `\hl` is from `soul` package.
 \newcommand{\hlitmizeditem}{\item[\hl{\labelitemi}]}
 ```
 2. use `\hlitmizeditem` to replacd `\item`.
+
+## Label styles of `enumerate` and `itemmize` environment
+### `enumerate`
+```latex
+%Roman numbers
+\begin{enumerate}[label=(\roman*)]
+%...
+% Arabic numbers
+\begin{enumerate}[label=\arabic*)]
+%...
+% Alphabetical
+\begin{enumerate}[label=\alph*)]
+%...
+```
+### `itemize`
+```latex
+% choose whatever you like
+\begin{itemize}[label=$\ast$]
+```
