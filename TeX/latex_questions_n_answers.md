@@ -103,3 +103,6 @@ Note that `\hl` is from `soul` package.
 % choose whatever you like
 \begin{itemize}[label=$\ast$]
 ```
+
+## highlight with `soul` failed to highlight citations.
+Try using `{}` to surround the `\cite{}` command or using `\mbox{}` to surround `\cite{}`.
