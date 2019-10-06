@@ -1,4 +1,5 @@
 # Python multithreading and parallel processing
+from https://timber.io/blog/multiprocessing-vs-multithreading-in-python-what-you-need-to-know/#what-should-you-use-
 # multithreading 
 Python is a linear language, but the threading module comes in handy when you want a little more processing power. While threading in Python cannot be used for parallel CPU computation, it's perfect for I/O operations such as web scraping because the processor is sitting idle waiting for data.
 
