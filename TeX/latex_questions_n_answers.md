@@ -111,3 +111,9 @@ Try using `{}` to surround the `\cite{}` command or using `\mbox{}` to surround 
 ```latex
 \renewcommand\refname{\vskip -1.5em}
 ```
+
+## Quotation mark in LaTeX
+We cannot use quotation mark directly from the keyboard. We should use the following symbols.
+```latex
+``quote''
+```
