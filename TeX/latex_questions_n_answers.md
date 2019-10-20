@@ -106,3 +106,8 @@ Note that `\hl` is from `soul` package.
 
 ## highlight with `soul` failed to highlight citations.
 Try using `{}` to surround the `\cite{}` command or using `\mbox{}` to surround `\cite{}`.
+
+## How to remove Reference section title
+```latex
+\renewcommand\refname{\vskip -1.5em}
+```
