@@ -117,3 +117,9 @@ We cannot use quotation mark directly from the keyboard. We should use the follo
 ```latex
 ``quote''
 ```
+
+## IEEETrans Template sometimes failed to meet the margin requirement in edas system.
+e.g. top margin is less than the requriement, we can simply add more margins
+```latex
+\addtolength{\topmargin}{+0.1cm}
+```
