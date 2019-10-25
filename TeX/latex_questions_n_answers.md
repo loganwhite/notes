@@ -123,3 +123,12 @@ e.g. top margin is less than the requriement, we can simply add more margins
 ```latex
 \addtolength{\topmargin}{+0.1cm}
 ```
+
+## How to eliminate the vertical space below algorithm
+Add the following code snippet above `\begin{algorithm}[t]`.
+```latex
+\setlength{\textfloatsep}{0pt}
+\begin{algorithm}[ht]
+...
+\end{algorithm}
+```
