@@ -132,3 +132,20 @@ Add the following code snippet above `\begin{algorithm}[t]`.
 ...
 \end{algorithm}
 ```
+
+## How to change the vertical space before or after section heading
+```latex
+% \titlespacing{command}{left spacing}{before spacing}{after spacing}[right]
+% spacing: how to read {12pt plus 4pt minus 2pt}
+%           12pt is what we would like the spacing to be
+%           plus 4pt means that TeX can stretch it by at most 4pt
+%           minus 2pt means that TeX can shrink it by at most 2pt
+%       This is one example of the concept of, 'glue', in TeX
+
+\usepackage{titlesec}
+
+\titlespacing*{\section}{0pt}{1pt plus 1pt minus 1pt}{0pt plus 1pt minus 1pt}
+\titlespacing*{\subsection}{0pt}{1pt plus 1pt minus 1pt}{0pt plus 1pt minus 1pt}
+\titlespacing*{\subsubsection}{0pt}{1pt plus 1pt minus 1pt}{0pt plus 1pt minus 1pt}
+```
+Please note that `*` is used to guarantee the first paragraph do not have indentation.
