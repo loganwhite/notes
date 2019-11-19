@@ -16,3 +16,12 @@ sns_plot = sns.boxplot(y="day", x="total_bill", data=tips)
 
 sns_plot.figure.savefig("output.pdf")
 ```
+
+## Remove legend title
+legend titles are enabled by default, we can modify the legend behavior using matplotlib apis.
+
+```python3
+# use plt.gca() to get the current axe 
+# and invoke legend() function to disable the legend title
+plt.gca().legend(title=None) 
+```
