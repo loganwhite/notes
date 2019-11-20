@@ -149,3 +149,12 @@ Add the following code snippet above `\begin{algorithm}[t]`.
 \titlespacing*{\subsubsection}{0pt}{1pt plus 1pt minus 1pt}{0pt plus 1pt minus 1pt}
 ```
 Please note that `*` is used to guarantee the first paragraph do not have indentation.
+
+## Removing vertical spaces before `enumerate` or `itemized` environment
+use `topsep=0pt, noitemsep` options. as follows
+```latex
+relevant. 
+\begin{enumerate}[wide, topsep=0pt, noitemsep,label=\textbf{(\arabic*)}]
+\item ...
+\end{enumerate}
+```
