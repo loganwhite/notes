@@ -158,3 +158,16 @@ relevant.
 \item ...
 \end{enumerate}
 ```
+## Avoid text wrap when using `\ref{}` and define reference command.
+Sometimes, when refering figures, tables, and etc. in the text, we tend to use `Figure \ref{fig:fig1}`. However, this should be replaced by `Figure~\ref{fig:fig1}`. Because the TeX system will avoid wrap text if using the latter form. 
+
+Another good practice is define our own-defined commands which help us quick adjust to the required format. E.g., some template requires Fig. rather than Figure we can simply modify our newly defined command rather than modify everywhere in the main text. Follows are the useful reference definitions.
+```latex
+\newcommand{\refs}[1]{Section~\ref{#1}}
+\newcommand{\reff}[1]{Figure~\ref{#1}}
+\newcommand{\reft}[1]{Table~\ref{#1}}
+\newcommand{\refe}[1]{Equation~\ref{#1}}
+\newcommand{\refa}[1]{Algorithm~\ref{#1}}
+```
+
+
