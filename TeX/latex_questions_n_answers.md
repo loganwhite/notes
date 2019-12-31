@@ -88,6 +88,9 @@ Note that `\hl` is from `soul` package.
 ## Label styles of `enumerate` and `itemmize` environment
 ### `enumerate`
 ```latex
+...
+\usepackage{enumitem}
+...
 %Roman numbers
 \begin{enumerate}[label=(\roman*)]
 %...
