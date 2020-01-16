@@ -6,6 +6,9 @@ Note: only local folder can reserve data after reboot.
 2. add the following code:
 
 ```bash
+#!/bin/sh
+
+
 echo "wait for open flow daemon to start..."
 sleep 1m
 
