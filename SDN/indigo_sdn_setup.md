@@ -1,5 +1,6 @@
 ## add flows while system starts up
 Note: only local folder can reserve data after reboot.
+Reference: [indigo manual](https://floodlight.atlassian.net/wiki/spaces/Indigo/pages/2392083/Indigo+Initialization+and+Configuration) describes the system initialization process
 
 1. add a shell script in `/local` folder named `add_flows.sh`
 
