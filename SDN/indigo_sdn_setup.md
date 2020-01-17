@@ -29,3 +29,10 @@ dpctl dump-flows tcp:127.0.0.1:6633
 source /local/add_flows.sh &
 ```
 Note that absolute path must be used and `&` must be used to put the `add_flows.sh` script run in the background and allow openflow daemon to start.
+
+## limit forwarding ports speed
+using the `port` command, as shown in [Indigo Manual](https://floodlight.atlassian.net/wiki/spaces/Indigo/pages/2392084/Indigo+CLI+Reference)
+```bash
+cmd port set 8,18,38 speed=100
+```
+Keyword `cmd` should be used here to invoke `port` command. The unit of speed is Mb.
