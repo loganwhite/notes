@@ -36,4 +36,10 @@ using the `port` command, as shown in [Indigo Manual](https://floodlight.atlassi
 ```bash
 cmd port set 8,18,38 speed=100
 ```
+**After limiting the speed using the command above, we have to manually enable the set ports**
+```bash
+cmd port set 8,18,38 enable=yes
+cmd port set 8,18,38 autoneg=yes
+```
+
 Keyword `cmd` should be used here to invoke `port` command. The unit of speed is Mb.
