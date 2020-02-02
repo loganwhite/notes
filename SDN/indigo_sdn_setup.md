@@ -41,5 +41,6 @@ cmd port set 8,18,38 speed=100
 cmd port set 8,18,38 enable=yes
 cmd port set 8,18,38 autoneg=yes
 ```
+**NOTE:** that if using two indigo switches connecting together, one have to be **not enable*** `autoneg`, otherwise, the speed limit will not be enabled.
 
 Keyword `cmd` should be used here to invoke `port` command. The unit of speed is Mb.
