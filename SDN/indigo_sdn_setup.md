@@ -43,4 +43,6 @@ cmd port set 8,18,38 autoneg=yes
 ```
 **NOTE:** that if using two indigo switches connecting together, one have to be **not enable*** `autoneg`, otherwise, the speed limit will not be enabled.
 
+**NOTE:** if setting the port speed to be 1000M which is the default maximum speed. `autoneg` should be set to yes. Otherwise, the link is not connected.
+
 Keyword `cmd` should be used here to invoke `port` command. The unit of speed is Mb.
