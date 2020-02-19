@@ -173,4 +173,6 @@ Another good practice is define our own-defined commands which help us quick adj
 \newcommand{\refa}[1]{Algorithm~\ref{#1}}
 ```
 
+## How to remove page numbers on all pages?
+Add `\pagenumbering{gobble}`.
 
