@@ -176,3 +176,34 @@ Another good practice is define our own-defined commands which help us quick adj
 ## How to remove page numbers on all pages?
 Add `\pagenumbering{gobble}`.
 
+
+## How to insert code to in LaTeX?
+
+I firstly used `listings` to insert code sneppet. But I did dislike the default font used by the listing package. Back then, I did not know that the font can be changed. So I switched to `verbatim`, but `verbatim` is a simple dull tt font display, without any bold or emphsize on keywords, which does not satisfy me.
+
+I researched the question online and got an answer that the default font of `listings` package can be changed. So I switch back to `listings`. Follows are the minimum working environment of `listings`.
+
+```latex
+\usepackage{listings}
+\usepackage{courier} %% This package is used to change the default font to the courier font.
+
+% listing settings, these setting works for my demands.
+% Note that xleftmargin is used to solve the problem that 
+% listing is too wide to expand outside the paragraph width (column width).
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
+\lstset{language=C++,frame=single,numbers=left,xleftmargin=2em}  
+\lstset{morekeywords={@decor,Packet,Interface,NATState,uint8_t}}
+
+% floating behavior, caption, and label should be set up at the configuration list
+\begin{lstlisting}[float={t},caption={Vanilla NAT implementation using \name{}.},label={list:gover_nat},captionpos=b]
+// nat.gov
+#include <stdio.h>
+// main function
+int main() {
+  printf("Hello World!\n");
+  return 0;
+}
+\end{lstlisting}
+
+
+```
