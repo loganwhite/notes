@@ -13,13 +13,13 @@ Reference: [indigo manual](https://floodlight.atlassian.net/wiki/spaces/Indigo/p
 echo "wait for open flow daemon to start..."
 sleep 1m
 
-dpctl add-flow tcp:127.0.0.1:6633 priority=100,idle_timeout=0,hard_timeout=0,in_port=51,dl_type=0x800,nw_src=10.0.0.1/32,actions=mod_dl_dst:7c:fe:90:91:b7:70,output:8
-dpctl add-flow tcp:127.0.0.1:6633 priority=100,idle_timeout=0,hard_timeout=0,in_port=51,dl_type=0x800,nw_src=10.0.0.2/32,actions=mod_dl_dst:7c:fe:90:91:b7:70,output:18
-dpctl add-flow tcp:127.0.0.1:6633 priority=100,idle_timeout=0,hard_timeout=0,in_port=51,dl_type=0x800,nw_src=10.0.0.3/32,actions=mod_dl_dst:7c:fe:90:91:b7:70,output:38
+dpctl add-flow tcp:127.0.0.1:6633 priority=100,idle_timeout=0,hard_timeout=0,in_port=51,dl_type=0x800,nw_src=10.0.0.1/32,actions=mod_dl_dst:00:00:00:00:00:00,output:8
+dpctl add-flow tcp:127.0.0.1:6633 priority=100,idle_timeout=0,hard_timeout=0,in_port=51,dl_type=0x800,nw_src=10.0.0.2/32,actions=mod_dl_dst:00:00:00:00:00:00,output:18
+dpctl add-flow tcp:127.0.0.1:6633 priority=100,idle_timeout=0,hard_timeout=0,in_port=51,dl_type=0x800,nw_src=10.0.0.3/32,actions=mod_dl_dst:00:00:00:00:00:00,output:38
 
-dpctl add-flow tcp:127.0.0.1:6633 priority=100,idle_timeout=0,hard_timeout=0,in_port=8,actions=mod_dl_dst:e4:1d:2d:29:f0:40,output:51
-dpctl add-flow tcp:127.0.0.1:6633 priority=100,idle_timeout=0,hard_timeout=0,in_port=18,actions=mod_dl_dst:e4:1d:2d:29:f0:40,output:51
-dpctl add-flow tcp:127.0.0.1:6633 priority=100,idle_timeout=0,hard_timeout=0,in_port=28,actions=mod_dl_dst:e4:1d:2d:29:f0:40,output:51
+dpctl add-flow tcp:127.0.0.1:6633 priority=100,idle_timeout=0,hard_timeout=0,in_port=8,actions=mod_dl_dst:00:00:00:00:00:00,output:51
+dpctl add-flow tcp:127.0.0.1:6633 priority=100,idle_timeout=0,hard_timeout=0,in_port=18,actions=mod_dl_dst:00:00:00:00:00:00,output:51
+dpctl add-flow tcp:127.0.0.1:6633 priority=100,idle_timeout=0,hard_timeout=0,in_port=28,actions=mod_dl_dst:00:00:00:00:00:00,output:51
 
 dpctl dump-flows tcp:127.0.0.1:6633
 ```
