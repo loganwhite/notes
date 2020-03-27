@@ -204,6 +204,11 @@ int main() {
   return 0;
 }
 \end{lstlisting}
-
-
 ```
+
+## How to group reference numbers in the main body in IEEEtran latex template.
+Add the following package.
+```latex
+\usepackage[noadjust]{cite}
+```
+
