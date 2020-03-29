@@ -212,3 +212,12 @@ Add the following package.
 \usepackage[noadjust]{cite}
 ```
 
+## How to display check and cross
+
+```latex
+\usepackage{pifont}
+
+% define check and cross with command
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+```
