@@ -221,3 +221,13 @@ Add the following package.
 \newcommand{\cmark}{\ding{51}}%
 \newcommand{\xmark}{\ding{55}}%
 ```
+
+## `IEEETran` incompatible with `hyperref`
+For some reasons, \maketitle gets redefined twice, and the second time \HyOrg@maketitle (what hyperref uses to store the old meaning of \maketitle) points to itself, thus creating a loop.
+
+We can use the following trick to solve the problem.
+```latex
+\let\keptmaketitle\maketitle
+\usepackage{hyperref}
+\let\maketitle\keptmaketitle
+```
