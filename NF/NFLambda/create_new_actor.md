@@ -6,5 +6,5 @@
 4. Add actor type id in the `shared.h` header file.
 5. Add actor spawn code in the `middleman/actor.c` file to intialize the actor when running.
 6. Add middleman attachment code to `middleman/actor.c` to attach the actor to the middleman.
-7. Add action code to `middleman/mm.c`
+7. Add action code to `middleman/mm.c`, also please don't forget to change the maximum number of NFs in `mm.h`
 8. Add the `dummy.c` source file to `Makefile` file.
