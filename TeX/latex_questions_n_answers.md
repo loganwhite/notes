@@ -233,6 +233,8 @@ We can use the following trick to solve the problem.
 ```
 
 ## Using `aligned` environment can bring errors saying that `aligned` environment cannot be used outside math mode.
+Error message: '\begin{aligned} allowed only in math mode.'
+
 To solve this problem, we can simply put the `aligned` environment into a `math` environment
 ```latex
 \begin{math}
