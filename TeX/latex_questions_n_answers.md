@@ -231,3 +231,13 @@ We can use the following trick to solve the problem.
 \usepackage{hyperref}
 \let\maketitle\keptmaketitle
 ```
+
+## Using `aligned` environment can bring errors saying that `aligned` environment cannot be used outside math mode.
+To solve this problem, we can simply put the `aligned` environment into a `math` environment
+```latex
+\begin{math}
+\begin{aligned}
+...
+\end{aligned}
+\end{math}
+```
