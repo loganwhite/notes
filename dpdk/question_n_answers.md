@@ -37,3 +37,9 @@ static const struct rte_eth_conf port_conf = {
 +         total_ports = rte_eth_dev_count_avail();
  
 ```
+
+## How to compile DPDK that generates debug symbols
+add the following line before compiling DPDK
+```bash
+export EXTRA_CFLAGS='-O0 -g'
+```
