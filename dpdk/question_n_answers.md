@@ -43,3 +43,7 @@ add the following line before compiling DPDK
 ```bash
 export EXTRA_CFLAGS='-O0 -g'
 ```
+
+## Get Segmentfault (Core dump) after allocating memory with `rte_malloc`
+This is really a stupid issue I faced more than once. The first time it the becomes OK but I didn't know why. The second time, I figured out that it was because i forget to add the `rte_malloc.h` header file in the source code.
+
