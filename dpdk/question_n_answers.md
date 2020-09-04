@@ -47,3 +47,7 @@ export EXTRA_CFLAGS='-O0 -g'
 ## Get Segmentfault (Core dump) after allocating memory with `rte_malloc`
 This is really a stupid issue I faced more than once. The first time it the becomes OK but I didn't know why. The second time, I figured out that it was because i forget to add the `rte_malloc.h` header file in the source code.
 
+
+## `RING: Cannot reserve memory` and `HASH: memory allocation failed` when creating Hash Table on different CPU sockets
+The most possible reason for show this may be the name of the hash tables are duplicate, thus resulting in memory region confilict.
+**Use different Hash names for them**.
