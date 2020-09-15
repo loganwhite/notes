@@ -13,6 +13,10 @@ Reference: [indigo manual](https://floodlight.atlassian.net/wiki/spaces/Indigo/p
 echo "wait for open flow daemon to start..."
 sleep 1m
 
+ifconfig eth0 192.168.0.3 netmask 255.255.255.0 broadcast 192.168.0.255
+#passwd root -d 'indigoB20'
+echo -e "Passwd\nPasswd" | passwd root
+
 dpctl add-flow tcp:127.0.0.1:6633 priority=100,idle_timeout=0,hard_timeout=0,in_port=51,dl_type=0x800,nw_src=10.0.0.1/32,actions=mod_dl_dst:00:00:00:00:00:00,output:8
 dpctl add-flow tcp:127.0.0.1:6633 priority=100,idle_timeout=0,hard_timeout=0,in_port=51,dl_type=0x800,nw_src=10.0.0.2/32,actions=mod_dl_dst:00:00:00:00:00:00,output:18
 dpctl add-flow tcp:127.0.0.1:6633 priority=100,idle_timeout=0,hard_timeout=0,in_port=51,dl_type=0x800,nw_src=10.0.0.3/32,actions=mod_dl_dst:00:00:00:00:00:00,output:38
@@ -40,6 +44,12 @@ cmd port set 8,18,38 speed=100
 ```bash
 cmd port set 8,18,38 enable=yes
 cmd port set 8,18,38 autoneg=yes
+```
+
+## Login switch using `ssh`
+Due to the use of very obsolete version of the ssh agent on the switch, we have to add extra parameters to successfully log into the switch.
+```bash
+ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 root@192.168.0.3
 ```
 
 **NOTE:** that if using two indigo switches connecting together, one have to be **not enable*** `autoneg`, otherwise, the speed limit will not be enabled.
