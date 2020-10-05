@@ -51,3 +51,48 @@ This is really a stupid issue I faced more than once. The first time it the beco
 ## `RING: Cannot reserve memory` and `HASH: memory allocation failed` when creating Hash Table on different CPU sockets
 The most possible reason for show this may be the name of the hash tables are duplicate, thus resulting in memory region confilict.
 **Use different Hash names for them**.
+
+
+## How to calculate CPU utilization and queue utilization in DPDK?
+As DPDK using the poll model, and the CPU keeps polling the NIC to get new packets. This results in the CPU utilization is always 100% at the operating system level. In fact, the CPU utilization should be calculated as # of CPU cycles that receives packets over # of packets of total packets. The following code snippet can be used for getting the CPU utilization (not yet validated; code from RSS++).
+```c++
+...
+Vector<float> l(num_max_cpus(), 0);
+unsigned long long totalUser, totalUserLow, totalSys, totalIdle, totalIoWait, totalIrq, totalSoftIrq;
+int cpuId;
+FILE* file = fopen("/proc/stat", "r");
+char buffer[1024];
+char *res = fgets(buffer, 1024, file);
+assert(res);
+while (fscanf(file, "cpu%d %llu %llu %llu %llu %llu %llu %llu", &cpuId, &totalUser, &totalUserLow, &totalSys, &totalIdle, &totalIoWait, &totalIrq, &totalSoftIrq) > 0) {
+if (cpuId < l.size()) {
+        unsigned long long newTotal = totalUser + totalUserLow + totalSys + totalIrq + totalSoftIrq;
+        unsigned long long tdiff =  (newTotal - _cpustats[cpuId].lastTotal);
+        unsigned long long idiff =  (totalIdle - _cpustats[cpuId].lastIdle);
+        if (tdiff + idiff > 0)
+            l[cpuId] =  (float)tdiff / (float)(tdiff + idiff);
+        _cpustats[cpuId].lastTotal = newTotal;
+        _cpustats[cpuId].lastIdle = totalIdle;
+        //click_chatter("C %d total %d %d %d",cpuId,newTotal,tdiff, idiff);
+        res = fgets(buffer, 1024, file);
+    }
+}
+fclose(file);
+...
+```
+Also the queue utilization can be retrieved by calculating the # of descriptors has recevied on the queue over # of total descriptors on the queue (not validated, code from RSS++).
+```c++
+...
+DPDKDevice* fd = (DPDKDevice*)((BalanceMethodDevice*)_method)->_fd;
+int port_id = fd->port_id;
+float rxdesc = fd->get_nb_rxdesc();
+for (int u = 0; u < _used_cpus.size(); u++) {
+    int i = _used_cpus[u].id;
+    int v = rte_eth_rx_queue_count(port_id, i);
+    float l = (float)v / rxdesc;
+    load.push_back(std::pair<int,float>{i,l});
+    totload += l;
+}
+...
+```
+
