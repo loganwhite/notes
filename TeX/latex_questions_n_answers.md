@@ -243,3 +243,8 @@ To solve this problem, we can simply put the `aligned` environment into a `math`
 \end{aligned}
 \end{math}
 ```
+
+## How to represent matrix or vector transpose in LaTeX?
+```latex
+\mathbf{a} = \left\{a_1, a_2, \dots, a_n\right\}^\interca
+```
