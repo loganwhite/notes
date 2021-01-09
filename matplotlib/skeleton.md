@@ -27,13 +27,15 @@ matplotlib.rcParams['font.serif'] = ['times']
 # beautiful font
 matplotlib.rcParams['pdf.use14corefonts'] = True
 
+fontsz = '12'
+
 params = {
-    'axes.labelsize' : '12',
-    'xtick.labelsize' : '12',
-    'ytick.labelsize' : '12',
+    'axes.labelsize' : fontsz,
+    'xtick.labelsize' : fontsz,
+    'ytick.labelsize' : fontsz,
     'lines.linewidth' : '0.5',
-    'legend.fontsize' : '12',
-    'legend.title_fontsize' : '12',
+    'legend.fontsize' : fontsz,
+    'legend.title_fontsize' : fontsz,
     'figure.figsize' : '5, 3.5',
 }
 
