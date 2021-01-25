@@ -253,6 +253,7 @@ To solve this problem, we can simply put the `aligned` environment into a `math`
 Use the code snippet
 ```latex
 \usepackage{refcount}
+\usepackage{CJKnumb}
 
 ......
 
