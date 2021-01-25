@@ -248,3 +248,13 @@ To solve this problem, we can simply put the `aligned` environment into a `math`
 ```latex
 \mathbf{a} = \left\{a_1, a_2, \dots, a_n\right\}^\interca
 ```
+
+## How to change the arabic reference number to the corresponding Chinese character when invoking \ref{} in a xeCJK Chinese document?
+Use the code snippet
+```latex
+\usepackage{refcount}
+
+......
+
+\newcommand{\refch}[1]{第\CJKnumber{\getrefnumber{#1}}章}
+```
