@@ -259,3 +259,15 @@ Use the code snippet
 
 \newcommand{\refch}[1]{第\CJKnumber{\getrefnumber{#1}}章}
 ```
+
+## How to refer the name of a section or a chapter?
+Use the `nameref` package
+```
+\usepackage{hyperref}
+...
+\section{Section Name}
+\label{sec:example}
+...
+\nameref{sec:example} % Here will show "Section Name" after compilation.
+...
+```
