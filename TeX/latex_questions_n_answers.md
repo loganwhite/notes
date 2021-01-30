@@ -262,7 +262,7 @@ Use the code snippet
 
 ## How to refer the name of a section or a chapter?
 Use the `nameref` package
-```
+```latex
 \usepackage{hyperref}
 ...
 \section{Section Name}
