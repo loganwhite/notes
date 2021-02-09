@@ -271,3 +271,20 @@ Use the `nameref` package
 \nameref{sec:example} % Here will show "Section Name" after compilation.
 ...
 ```
+
+##（How to Change the algorithm name (reference name, e.g., Algorithm 1, Algorithm 2 to 算法 1, 算法 2), and change the Input Output？
+```latex
+\SetAlgorithmName{算法}{算法}{算法列表}
+\begin{algorithm}[t]
+ \caption{This is a algorithm caption.}
+ \label{al:alg}
+\SetAlgoVlined
+\SetKwInput{KwIn}{输入}
+\SetKwInput{KwOut}{输出}
+\SetKw{Continue}{continue}
+
+\KwIn{$A$}
+\KwOut{$B$}
+...
+\end{algorithm}
+```
