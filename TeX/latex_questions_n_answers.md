@@ -272,7 +272,7 @@ Use the `nameref` package
 ...
 ```
 
-##（How to Change the algorithm name (reference name, e.g., Algorithm 1, Algorithm 2 to 算法 1, 算法 2), and change the Input Output？
+## How to Change the algorithm name (reference name, e.g., Algorithm 1, Algorithm 2 to 算法 1, 算法 2), and change the Input Output？
 ```latex
 \SetAlgorithmName{算法}{算法}{算法列表}
 \begin{algorithm}[t]
