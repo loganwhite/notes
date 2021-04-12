@@ -288,3 +288,25 @@ Use the `nameref` package
 ...
 \end{algorithm}
 ```
+
+## How to modify the default title page elements style?
+Make modification similar to the code snippet below. NOTE that `\makeatletter` and `\makeatother` are required in the beamer.
+
+```latex
+\makeatletter
+\newcommand\department[1]{\renewcommand\@department{#1}}
+\newcommand\@department{}
+
+\renewcommand{\maketitle}{\bgroup\setlength{\parindent}{0pt}
+\begin{flushleft}
+
+  {\vspace{18pt}\fontsize{16}{32}\selectfont\textbf{\@title}\par}
+  \vspace{16pt}
+  {\fontsize{14}{14}\selectfont\textbf{\@author}\par}
+  \vspace{10pt}
+  {\fontsize{12}{12}\setlength{\baselineskip}{24pt}\@department\par}
+  \vspace{14pt}
+\end{flushleft}\egroup
+}
+\makeatother
+```
