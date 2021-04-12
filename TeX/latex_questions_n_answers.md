@@ -310,3 +310,6 @@ Make modification similar to the code snippet below. NOTE that `\makeatletter` a
 }
 \makeatother
 ```
+
+## How to reduce the unexpected vertical spaces between paragraphs?
+Place `\parskip=0pt` followed by `\begin{documnet}`.
