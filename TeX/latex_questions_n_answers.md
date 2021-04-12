@@ -290,7 +290,7 @@ Use the `nameref` package
 ```
 
 ## How to modify the default title page elements style?
-Make modification similar to the code snippet below. NOTE that `\makeatletter` and `\makeatother` are required in the beamer.
+Make modification similar to the code snippet below. NOTE that `\makeatletter` and `\makeatother` are required in the preamble.
 
 ```latex
 \makeatletter
