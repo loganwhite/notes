@@ -313,3 +313,22 @@ Make modification similar to the code snippet below. NOTE that `\makeatletter` a
 
 ## How to reduce the unexpected vertical spaces between paragraphs?
 Place `\parskip=0pt` followed by `\begin{documnet}`.
+
+## How to reduce vertical spaces between subfloat rows?
+
+Place a `[negativespace]` like `[-2cm]` at the end of subfloat in the current line.
+
+```latex
+\documentclass{article}
+\usepackage{subfig}
+\usepackage{graphicx}
+\begin{document}
+\begin{figure}[htb]
+ \subfloat[Some figure]{\includegraphics[width=0.48\textwidth]{example-image-a}}\hfill
+ \subfloat[Some other figure]{\includegraphics[width=0.48\textwidth]{example-image-b}}\\[-2cm]  %%<-- in this line
+ \subfloat[Some more]{\includegraphics[width=0.48\textwidth]{example-image-c}}\hfill
+ \subfloat[Some less]{\includegraphics[width=0.48\textwidth]{example-image}}
+ \caption{There are example figures}
+\end{figure}
+\end{document}
+```
