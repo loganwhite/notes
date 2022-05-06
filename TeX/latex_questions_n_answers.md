@@ -332,3 +332,6 @@ Place a `[negativespace]` like `[-2cm]` at the end of subfloat in the current li
 \end{figure}
 \end{document}
 ```
+
+## Reduce space between footnotes and the main text
+Put `\setlength{\skip\footins}{5pt}` right behind `\begin{document}` or right before the footnote you want to reduce space. Note that all succeeding footnote-maintext spaces are reduced.
