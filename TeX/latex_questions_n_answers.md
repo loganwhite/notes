@@ -335,3 +335,6 @@ Place a `[negativespace]` like `[-2cm]` at the end of subfloat in the current li
 
 ## Reduce space between footnotes and the main text
 Put `\setlength{\skip\footins}{5pt}` right behind `\begin{document}` or right before the footnote you want to reduce space. Note that all succeeding footnote-maintext spaces are reduced.
+
+## How to change the number of the caption of an Algorithm listing?
+Place `\setcounter{algocf}{1}` at the beginning of the algorithm environment.
