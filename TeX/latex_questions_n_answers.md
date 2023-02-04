@@ -352,3 +352,9 @@ Place `\setcounter{algocf}{1}` at the beginning of the algorithm environment.
   % CJKglue={\hskip 0pt plus 0.08\baselineskip}
 }
 ```
+
+## How to combine the citation indices?
+use the `cite` package listed as follows.
+```latex
+\usepackage[noadjust]{cite}
+```
