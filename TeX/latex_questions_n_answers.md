@@ -338,3 +338,17 @@ Put `\setlength{\skip\footins}{5pt}` right behind `\begin{document}` or right be
 
 ## How to change the number of the caption of an Algorithm listing?
 Place `\setcounter{algocf}{1}` at the beginning of the algorithm environment.
+
+## How to change font size in a group (ie, a small number of place)
+```latex
+% set fontsize to 22pt with line space 22pt
+{\fontsize{16pt}{22pt}\selectfont Font Size Sixteen} vs normal font size.
+```
+## How to shrink the space between characters in xeCJK environment?
+```latex
+\xeCJKsetup{
+  CJKglue={\hskip -0.08em plus 0.08\baselineskip}
+  % default value is
+  % CJKglue={\hskip 0pt plus 0.08\baselineskip}
+}
+```
