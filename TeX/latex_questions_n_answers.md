@@ -352,3 +352,13 @@ Place `\setcounter{algocf}{1}` at the beginning of the algorithm environment.
   % CJKglue={\hskip 0pt plus 0.08\baselineskip}
 }
 ```
+
+## How to break line in a url?
+Change the `url` package to `xurl`.
+
+
+## How to change the font of url?
+Internally `\url` uses `\UrlFont`. You can change it with `\urlstyle` (see the documentation of url in url.sty) or by redefining `\UrlFont`
+```latex
+\renewcommand\UrlFont{\rmfamily}
+```
