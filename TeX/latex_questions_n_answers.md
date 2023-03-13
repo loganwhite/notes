@@ -362,3 +362,17 @@ Internally `\url` uses `\UrlFont`. You can change it with `\urlstyle` (see the d
 ```latex
 \renewcommand\UrlFont{\rmfamily}
 ```
+
+## How to use square brackets in the enumerate environment
+```latex
+\documentclass{article}
+\usepackage{enumitem}% http://ctan.org/pkg/enumitem
+\begin{document}
+\begin{enumerate}[label={[\arabic*]}]
+  \item First item
+  \item Second item
+  \item \ldots
+  \item Last item
+\end{enumerate}
+\end{document}
+```
