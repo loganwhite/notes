@@ -1,23 +1,33 @@
 Calculating CDF using the following code snnipet:
 
 ```python3
-def generate_cdf_xy(data):
-    """
-        data: a 1 dementional list
-        return: x, y list.
-    """
-    x = sorted(data)
-    len_data = len(x)
-    
-    y = []
-    for i in range(len_data):
-        y.append(float(i) / float(len_data))
+def plot_cdf(data):
+    # start preparing the plot
+    plt.close('all')
+    plt.figure()
 
-    # lengthen the line
-    scale = x[-1] - x[0]
-    x_extrapoint = scale * 0.2 + x[-1]
-    y_extrapoint = 1.0
-    x.append(x_extrapoint)
-    y.append(y_extrapoint)
-    return x, y
+    step=0.01
+    indices = np.arange(0, 1 + step, step)
+
+    CDF = []
+
+    for data_list in data:
+        CDF.append(pd.DataFrame({'dummy':data_list})['dummy'].quantile(indices))
+
+    for i in range(len(CDF)):
+        plt.plot(CDF[i], indices, linewidth=1, label=data_labels[i], color=COLORS[i%len(COLORS)])
+
+    plt.xlabel('Counter Values')
+    plt.ylabel('CDF')
+    
+    # plt.xscale('log')
+  
+    plt.legend(ncol=6, bbox_to_anchor=(-0.14, 1), title='$\\omega$ Values', loc='lower left', columnspacing=0.1)
+    # plt.legend(loc='lower left', ncol=5, bbox_to_anchor=(-0.09, 1))
+    plt.tight_layout()
+    
+
+    # save to pdf file
+    
+    plt.savefig('{}.pdf'.format(filename), format='pdf', dpi=900)
 ```
