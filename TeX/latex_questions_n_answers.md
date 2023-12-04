@@ -376,3 +376,9 @@ Internally `\url` uses `\UrlFont`. You can change it with `\urlstyle` (see the d
 \end{enumerate}
 \end{document}
 ```
+
+## How to reduce spaces between words in math environment.
+Use `\!` in the space you want to shrink.
+```latex
+$$w\!=\!a$$
+```
