@@ -382,3 +382,14 @@ Use `\!` in the space you want to shrink.
 ```latex
 $$w\!=\!a$$
 ```
+## Limiting the number of authors in the references with IEEEtran
+First place the following code snippet into the head of your `.bib` file
+```bibtex
+@IEEEtranBSTCTL{IEEEexample:BSTcontrol,
+CTLuse_forced_etal       = "yes",
+CTLmax_names_forced_etal = "3",
+CTLnames_show_etal       = "2" }
+```
+This will limit author lists more than 3 by printing only the first 2 authors followed by et al.
+
+Next, you should place `\bstctlcite{IEEEexample:BSTcontrol}` at the beginning of the `document` environment.
