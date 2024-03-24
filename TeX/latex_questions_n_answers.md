@@ -393,3 +393,38 @@ CTLnames_show_etal       = "2" }
 This will limit author lists more than 3 by printing only the first 2 authors followed by et al.
 
 Next, you should place `\bstctlcite{IEEEexample:BSTcontrol}` at the beginning of the `document` environment.
+
+## Highlight commands using `\hl{}` results in errors.
+Register the command using `\soulregister{}7`. For example:
+```latex
+\soulregister{\cite}7
+\soulregister{\citep}7
+\soulregister{\citet}7
+\soulregister{\ref}7
+\soulregister{\solution}7
+\soulregister{\refs}7
+```
+
+## How to highlight section titles using `soul`.
+Replace `\section{this is title}` with
+```latex
+\section{\texorpdfstring{\hl{this is section}}{this is section}}
+\subsection{\texorpdfstring{\hl{this is subsection}}{this is subsection}}
+```
+
+
+## How to highlight the equation environment.
+See  the following example.
+```latex
+\documentclass{article}
+\usepackage{xcolor}
+\usepackage{soul}
+\newcommand{\mathcolorbox}[2]{\colorbox{#1}{$\displaystyle #2$}}
+
+\begin{document}
+For inline math, one can simply do \hl{colored $a=b$ math}.For display math, the following works:
+\begin{equation}
+\mathcolorbox{red}{y=\frac{x^2}{q}}+z
+\end{equation}
+\end{document} 
+```
