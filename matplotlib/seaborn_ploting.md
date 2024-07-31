@@ -25,3 +25,11 @@ legend titles are enabled by default, we can modify the legend behavior using ma
 # and invoke legend() function to disable the legend title
 plt.gca().legend(title=None) 
 ```
+
+
+## Further legend settings
+```python3
+leg = sns_plot.legend(title=None, ncol=5, loc='lower left', bbox_to_anchor=(-0.107, 1))
+for leg_handle in leg.legend_handles:
+	leg_handle.set_linewidth(1.0)
+```
