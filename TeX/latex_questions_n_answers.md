@@ -428,3 +428,22 @@ For inline math, one can simply do \hl{colored $a=b$ math}.For display math, the
 \end{equation}
 \end{document} 
 ```
+
+## How to adjust section title spaces for the `acmart` template?
+The `titlesec` package has conflict behavior to the original `acmart` template, exhibiting missing of `.` in subsubsection titles. Hence, we should change the title behavior defined in the `acmart` template. Following are the latex codes and should be placed in preamble.
+```latex
+\makeatletter
+    \renewcommand\section{\@startsection{section}{1}{\z@}%
+      {-.1\baselineskip \@plus -.1\p@ \@minus -.1\p@}% % Space before section title
+      {.1\baselineskip}% % Space after section title
+      {\ACM@NRadjust\@secfont}}
+    \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+      {-.1\baselineskip \@plus -.1\p@ \@minus -.1\p@}% % Space before subsection title
+      {.1\baselineskip}% % Space after subsection title
+      {\ACM@NRadjust\@subsecfont}}
+    \renewcommand\subsubsection{\@startsection{subsubsection}{3}{10pt}%
+  {-.1\baselineskip \@plus -.1\p@ \@minus -.1\p@}%
+  {-3.5\p@}%
+  {\@subsubsecfont\@adddotafter}}
+\makeatother
+```
