@@ -1,6 +1,6 @@
 # Prerequisition (local desktop operations)
 
-*Notice: Skip this step if your conputer has XQuartz installed!*
+**Notice: Skip this step if your conputer has XQuartz installed!**
 
 Go to https://www.xquartz.org and download the latest version of XQuartz software, which is an X window software suit for MacOS.
 
