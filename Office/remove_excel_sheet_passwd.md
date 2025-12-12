@@ -3,10 +3,10 @@
 1. Right click the sheet tab and select `View Code`. This brings you to the VB window.
 2. Copy and Paste the following code snippet.
 ```basic
-Option Explicit
 Sub GetPass()
     Const a = 65, b = 66, c = 32, d = 126
     Dim i#, j#, k#, l#, m#, n#, o#, p#, q#, r#, s#, t#
+    Dim pwd$
     With ActiveSheet
         If .ProtectContents Then
             On Error Resume Next
@@ -22,8 +22,13 @@ Sub GetPass()
                                                 For r = a To b
                                                     For s = a To b
                                                         For t = c To d
-            .Unprotect Chr(i) & Chr(j) & Chr(k) & Chr(l) & Chr(m) & _
-            Chr(n) & Chr(o) & Chr(p) & Chr(q) & Chr(r) & Chr(s) & Chr(t)
+                                                            pwd = Chr(i) & Chr(j) & Chr(k) & Chr(l) & Chr(m) & _
+                       Chr(n) & Chr(o) & Chr(p) & Chr(q) & Chr(r) & Chr(s) & Chr(t)
+                                                            .Unprotect pwd
+                                                            If Not .ProtectContents Then
+                                                                MsgBox "Password found: " & pwd, vbInformation
+                                                                Exit Sub
+                                                            End If
                                                         Next t
                                                     Next s
                                                 Next r
@@ -42,3 +47,4 @@ Sub GetPass()
 End Sub
 ```
 3. Hit the run botton, and the script will remove the password automatically.
+4. PWD is AABBAAABBAA_
