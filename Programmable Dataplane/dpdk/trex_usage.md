@@ -17,6 +17,35 @@
             threads: [1,3,5,7,9,11,13,15,17,19,21,23]
 ```
 
+For a much complete version
+```yaml
+- port_limit      : 2
+  version         : 2
+#List of interfaces. Change to suit your setup. Use ./dpdk_setup_ports.py -s to see available options
+  interfaces    : ["18:00.0","18:00.1"]
+  port_mtu: 1500
+  port_info       :  # Port IPs. Change to suit your needs. In case of loopback, you can leave as is.
+        - dest_mac: 08:c0:eb:b6:b5:dd
+          src_mac:  08:c0:eb:b6:b6:14
+        - dest_mac: 08:c0:eb:b6:b5:dc
+          src_mac: 08:c0:eb:b6:b6:15
+  platform:
+          master_thread_id: 0
+          latency_thread_id: 1
+          rx_thread_id: 23
+          dual_if:
+          - socket: 0
+            threads: [2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22]
+
+  dpdk:
+          rx_desc: 4096
+          tx_desc: 4096
+
+
+  extra_args: [ "-a", "18:00.0,mprq_en=1,mprq_log_stride_num=9", "-a", "18:00.1,mprq_en=1,mprq_log_stride_num=9" ]
+  rxqs: 8
+```
+
 ## How to run T-rex
 1. open a terminal to veda-umh  
 ```bash
