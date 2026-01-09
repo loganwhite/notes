@@ -211,3 +211,64 @@ Linux内核从3.6.0版本之后就一直包含VFIO模块，通常是默认存在
 
     ./usertools/dpdk-devbind.py --bind=ixgbe 82:00.0
 
+# Q&As
+## Compiling DPDK 18.11 on newer OS kernel version encounter issues:
+```bash
+/home/logan/dpdk1811/build/build/kernel/linux/igb_uio/igb_uio.c: In function ‘igbuio_pci_enable_interrupts’:
+/home/logan/dpdk1811/build/build/kernel/linux/igb_uio/igb_uio.c:230:6: error: this statement may fall through [-Werror=implicit-fallthrough=]
+  230 |   if (pci_alloc_irq_vectors(udev->pdev, 1, 1, PCI_IRQ_MSIX) == 1) {
+      |      ^
+/home/logan/dpdk1811/build/build/kernel/linux/igb_uio/igb_uio.c:240:2: note: here
+  240 |  case RTE_INTR_MODE_MSI:
+      |  ^~~~
+/home/logan/dpdk1811/build/build/kernel/linux/igb_uio/igb_uio.c:250:6: error: this statement may fall through [-Werror=implicit-fallthrough=]
+  250 |   if (pci_alloc_irq_vectors(udev->pdev, 1, 1, PCI_IRQ_MSI) == 1) {
+      |      ^
+/home/logan/dpdk1811/build/build/kernel/linux/igb_uio/igb_uio.c:259:2: note: here
+  259 |  case RTE_INTR_MODE_LEGACY:
+      |  ^~~~
+In file included from ./include/linux/device.h:15,
+                 from /home/logan/dpdk1811/build/build/kernel/linux/igb_uio/igb_uio.c:8:
+./include/linux/dev_printk.h:158:24: error: this statement may fall through [-Werror=implicit-fallthrough=]
+  158 |  dev_printk_index_wrap(_dev_notice, KERN_NOTICE, dev, dev_fmt(fmt), ##__VA_ARGS__)
+      |                        ^
+./include/linux/dev_printk.h:110:3: note: in definition of macro ‘dev_printk_index_wrap’
+  110 |   _p_func(dev, fmt, ##__VA_ARGS__);   \
+      |   ^~~~~~~
+/home/logan/dpdk1811/build/build/kernel/linux/igb_uio/igb_uio.c:267:3: note: in expansion of macro ‘dev_notice’
+  267 |   dev_notice(&udev->pdev->dev, "PCI INTX mask not supported\n");
+      |   ^~~~~~~~~~
+/home/logan/dpdk1811/build/build/kernel/linux/igb_uio/igb_uio.c:269:2: note: here
+  269 |  case RTE_INTR_MODE_NONE:
+      |  ^~~~
+  CC base/qbman/bman_driver.o
+```
+This is due to newer version of GCC treats switch/case falls throughs without `break`. We can disable this error message by setting up the `Makefile` ccflags. The `Makefile` is located in `dpdk1811/kernel/linux/igb_uio/Makefile`. Change the content to the following.
+```makefile
+# SPDX-License-Identifier: BSD-3-Clause
+# Copyright(c) 2010-2014 Intel Corporation
+
+include $(RTE_SDK)/mk/rte.vars.mk
+
+#
+# module name and path
+#
+MODULE = igb_uio
+MODULE_PATH = drivers/net/igb_uio
+
+#
+# CFLAGS
+#
+MODULE_CFLAGS += -I$(SRCDIR) --param max-inline-insns-single=100
+MODULE_CFLAGS += -I$(RTE_OUTPUT)/include
+MODULE_CFLAGS += -Winline -Wall -Werror  -Wno-implicit-fallthrough -Wno-error=implicit-fallthrough
+MODULE_CFLAGS += -include $(RTE_OUTPUT)/include/rte_config.h
+
+#
+# all source are stored in SRCS-y
+#
+SRCS-y := igb_uio.c
+
+include $(RTE_SDK)/mk/rte.module.mk
+```
+
