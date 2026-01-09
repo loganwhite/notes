@@ -60,5 +60,34 @@ OS parameters:
 
 `txq_inline_mpw=64`: for Enhanced Multi-Packet Write (eMPW), allows multiple packets to be sent with one PCIe transaction.
 
+`--rxq=12 --txq=12 --nb-cores=12 --rxd=1024 --txd=1024 --mbcache=512 --burst=64` parameters defines the number of rx and tx queues used and the # of cores used. `--rxd=1024 --txd=1024` defines the number of hardware descriptors in each rx ring and tx ring. If you encounter packet loss, this value should be increased. `--mbcache=512` sets the mbuf cache size for each core.
+
+To prevent crashes or packet loss, your Total Mempool Size must be significantly larger than the sum of these parameters.
+
+The Safety Formula:
+
+Total Mbufs>(RXD+TXD)×Queues+(mbcache×Lcores)+Burst_Overhead
+
+The Performance Trade-off:
+
+RXD/TXD vs. Mbcache:
+
+Larger RXD/TXD means Better ability to absorb traffic bursts (micro-bursts), but places higher pressure on memory capacity.
+
+Larger Mbcache means Faster allocation/freeing of memory (hits L1/L2 cache, no locks), leading to higher throughput.
+
+However, you cannot make mbcache arbitrarily large. DPDK typically requires that the cache size is not greater than roughly  1/1.5 of the total pool size per pool.
+
+Mbcache vs. Burst Size:
+
+If your application processes packets in bursts of 32, a cache of 512 is excellent (512/32=16 rounds).
+
+If mbcache is too small (e.g., smaller than the burst size), the CPU constantly has to go to the Global Mempool (hitting locks), which kills performance.
+
+If you see imiss (Hardware drops): Your CPU might be too slow to empty the RX ring, OR your memory pool is too small (Starvation).
+
+If CPU usage is low but throughput is capped: Check if mbcache is too small, causing lock contention on the memory pool.
+
+
 
    
